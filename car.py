@@ -18,17 +18,22 @@ class Car(Serviceable, ABC):
         return self.engine.needs_service() or self.battery.needs_service()
 
 class CarFactory:
-     def create_calliope(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
+     @staticmethod
+     def create_calliope(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
         return Car(CapuletEngine(current_mileage, last_service_mileage), SpindlerBattery(current_date, last_service_date)) 
     
-     def create_glissade(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
+     @staticmethod
+     def create_glissade(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
         return Car(WilloughbyEngine(current_mileage, last_service_mileage), SpindlerBattery(current_date, last_service_date)) 
 
-     def create_palindrome(self, current_date: date, last_service_date: date, warning_light_on: bool) -> Car:
+     @staticmethod
+     def create_palindrome(current_date: date, last_service_date: date, warning_light_on: bool) -> Car:
         return Car(SternmanEngine(warning_light_on), SpindlerBattery(current_date, last_service_date)) 
 
-     def create_rorschach(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
+     @staticmethod
+     def create_rorschach(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
         return Car(WilloughbyEngine(current_mileage, last_service_mileage), NubbinBattery(current_date, last_service_date)) 
 
-     def create_thovex(self, current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
+     @staticmethod
+     def create_thovex(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int) -> Car:
         return Car(CapuletEngine(current_mileage, last_service_mileage), NubbinBattery(current_date, last_service_date))
